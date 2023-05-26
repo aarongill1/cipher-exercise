@@ -6,7 +6,7 @@ const N = 26;
 
 const shiftChar = char => char === ' ' ? ' ' : intToChar((charToInt(char) + 2) % N);
 
-const shiftCharBack = char => intToChar((charToInt(char) - 2 + N) % N);
+const shiftCharBack = char => char === ' ' ? ' ' : intToChar((charToInt(char) - 2 + N) % N);
 
 const encrypt = message => (
   message
