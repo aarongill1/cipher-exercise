@@ -2,9 +2,11 @@
 
 const { charToInt, intToChar } = require('./helpers');
 
-const N = 26; // Might be useful
+const N = 26;
 
 const shiftChar = char => char === ' ' ? ' ' : intToChar((charToInt(char) + 2) % N);
+
+const shiftCharBack = char => intToChar((charToInt(char) - 2) % N);
 
 const encrypt = message => (
   message
@@ -13,7 +15,12 @@ const encrypt = message => (
     .join('')
 );
 
-const decrypt = message => 'IMPLEMENT ME'; // Broken!
+const decrypt = message => (
+  message
+    .split('')
+    .map(shiftCharBack)
+    .join('')
+);
 
 module.exports = {
   decrypt,
