@@ -4,21 +4,21 @@ const { charToInt, intToChar } = require('./helpers');
 
 const N = 26;
 
-const shiftChar = char => char === ' ' ? ' ' : intToChar((charToInt(char) + 2) % N);
+const shiftChar = (char, shift) => char === ' ' ? ' ' : intToChar((charToInt(char) + shift) % N);
 
-const shiftCharBack = char => char === ' ' ? ' ' : intToChar((charToInt(char) - 2 + N) % N);
+const shiftCharBack = (char, shift) => char === ' ' ? ' ' : intToChar((charToInt(char) - shift + N) % N);
 
 const encrypt = (message, shift) => (
   message
     .split('')
-    .map(shiftChar)
+    .map(char => shiftChar(char, shift) )
     .join('')
 );
 
 const decrypt = (message, shift) => (
   message
     .split('')
-    .map(shiftCharBack)
+    .map(char => shiftCharBack(char, shift))
     .join('')
 );
 
