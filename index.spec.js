@@ -1,7 +1,8 @@
 'use strict';
 
 const cipherExercise = require('.');
-const { simpleShift2, trickyShift2, wordsShift2, complexShift2 } = require('./fixtures');
+const { simpleShift2, trickyShift2, wordsShift2, complexShift2,
+  simpleShift11, trickyShift11, wordsShift11, complexShift11 } = require('./fixtures');
 
 describe('cipher-exercise', () => {
   const { decrypt, encrypt } = cipherExercise || {};
@@ -47,13 +48,53 @@ describe('cipher-exercise', () => {
 
         describe('with a complex message', () => {
           beforeEach(() => {
-            result = encrypt(complexShift2.message, 2);
+            result = encrypt(complexShift2.message, shift);
           });
 
           it('returns a string', () => expect(typeof result).toBe('string'));
           it('in which the letters are shifted by 2', () => expect(result).toBe(complexShift2.shifted));
         });
       });
+    describe('when called with a shift of 11 characters', () => {
+      let result;
+      let shift = 11;
+
+      describe('with a simple message', () => {
+        beforeEach(() => {
+          result = encrypt(simpleShift11.message, shift);
+        });
+
+        it('returns a string', () => expect(typeof result).toBe('string'));
+        it('in which the letters are shifted by 11', () => expect(result).toBe(simpleShift11.shifted));
+      });
+
+      describe('with a tricky message', () => {
+        beforeEach(() => {
+          result = encrypt(trickyShift11.message, shift);
+        });
+
+        it('returns a string', () => expect(typeof result).toBe('string'));
+        it('in which the letters are shifted by 11 and wrap', () => expect(result).toBe(trickyShift11.shifted));
+      });
+
+      describe('with a multi-word message', () => {
+        beforeEach(() => {
+          result = encrypt(wordsShift11.message, shift);
+        });
+
+        it('returns a string', () => expect(typeof result).toBe('string'));
+        it('in which the letters (but NOT spaces) are shifted by 11', () => expect(result).toBe(wordsShift11.shifted));
+      });
+
+      describe('with a complex message', () => {
+        beforeEach(() => {
+          result = encrypt(complexShift11.message, shift);
+        });
+
+        it('returns a string', () => expect(typeof result).toBe('string'));
+        it('in which the letters are shifted by 11', () => expect(result).toBe(complexShift11.shifted));
+      });
+    });
   });
 
   describe('decrypt', () => {
