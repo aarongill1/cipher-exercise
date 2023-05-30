@@ -8,14 +8,14 @@ const shiftChar = char => char === ' ' ? ' ' : intToChar((charToInt(char) + 2) %
 
 const shiftCharBack = char => char === ' ' ? ' ' : intToChar((charToInt(char) - 2 + N) % N);
 
-const encrypt = message => (
+const encrypt = (message, shift) => (
   message
     .split('')
     .map(shiftChar)
     .join('')
 );
 
-const decrypt = message => (
+const decrypt = (message, shift) => (
   message
     .split('')
     .map(shiftCharBack)
