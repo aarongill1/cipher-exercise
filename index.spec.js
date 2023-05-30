@@ -1,26 +1,7 @@
 'use strict';
 
 const cipherExercise = require('.');
-
-const simple = {
-  message: 'abc',
-  shifted: 'cde'
-};
-
-const tricky = {
-  message: 'xyz',
-  shifted: 'zab'
-};
-
-const words = {
-  message: 'abc abc',
-  shifted: 'cde cde'
-};
-
-const complex = {
-  message: 'my very secret message',
-  shifted: 'oa xgta ugetgv oguucig'
-};
+const { simple, tricky, words, complex } = require('./fixtures');
 
 describe('cipher-exercise', () => {
   const { decrypt, encrypt } = cipherExercise || {};
