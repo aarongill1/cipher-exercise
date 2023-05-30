@@ -1,7 +1,7 @@
 'use strict';
 
 const cipherExercise = require('.');
-const { simple, tricky, words, complex } = require('./fixtures');
+const { simpleShift2, trickyShift2, wordsShift2, complexShift2 } = require('./fixtures');
 
 describe('cipher-exercise', () => {
   const { decrypt, encrypt } = cipherExercise || {};
@@ -20,38 +20,38 @@ describe('cipher-exercise', () => {
       
         describe('with a simple message', () => {
           beforeEach(() => {
-            result = encrypt(simple.message, shift);
+            result = encrypt(simpleShift2.message, shift);
           });
 
           it('returns a string', () => expect(typeof result).toBe('string'));
-          it('in which the letters are shifted by 2', () => expect(result).toBe(simple.shifted));
+          it('in which the letters are shifted by 2', () => expect(result).toBe(simpleShift2.shifted));
         });
 
         describe('with a tricky message', () => {
           beforeEach(() => {
-            result = encrypt(tricky.message, shift);
+            result = encrypt(trickyShift2.message, shift);
           });
 
           it('returns a string', () => expect(typeof result).toBe('string'));
-          it('in which the letters are shifted by 2 and wrap', () => expect(result).toBe(tricky.shifted));
+          it('in which the letters are shifted by 2 and wrap', () => expect(result).toBe(trickyShift2.shifted));
         });
 
         describe('with a multi-word message', () => {
           beforeEach(() => {
-            result = encrypt(words.message, shift);
+            result = encrypt(wordsShift2.message, shift);
           });
 
           it('returns a string', () => expect(typeof result).toBe('string'));
-          it('in which the letters (but NOT spaces) are shifted by 2', () => expect(result).toBe(words.shifted));
+          it('in which the letters (but NOT spaces) are shifted by 2', () => expect(result).toBe(wordsShift2.shifted));
         });
 
         describe('with a complex message', () => {
           beforeEach(() => {
-            result = encrypt(complex.message, 2);
+            result = encrypt(complexShift2.message, 2);
           });
 
           it('returns a string', () => expect(typeof result).toBe('string'));
-          it('in which the letters are shifted by 2', () => expect(result).toBe(complex.shifted));
+          it('in which the letters are shifted by 2', () => expect(result).toBe(complexShift2.shifted));
         });
       });
   });
@@ -66,34 +66,34 @@ describe('cipher-exercise', () => {
 
       describe('with a simple message', () => {
         beforeEach(() => {
-          result = decrypt(encrypt(simple.message, 2), 2);
+          result = decrypt(encrypt(simpleShift2.message, 2), 2);
         });
 
-        it('restores the message', () => expect(result).toBe(simple.message));
+        it('restores the message', () => expect(result).toBe(simpleShift2.message));
       });
 
       describe('with a tricky message', () => {
         beforeEach(() => {
-          result = decrypt(encrypt(tricky.message, 2), 2);
+          result = decrypt(encrypt(trickyShift2.message, 2), 2);
         });
 
-        it('restores the message', () => expect(result).toBe(tricky.message));
+        it('restores the message', () => expect(result).toBe(trickyShift2.message));
       });
 
       describe('with a multi-word message', () => {
         beforeEach(() => {
-          result = decrypt(encrypt(words.message, 2), 2);
+          result = decrypt(encrypt(wordsShift2.message, 2), 2);
         });
 
-        it('restores the message', () => expect(result).toBe(words.message));
+        it('restores the message', () => expect(result).toBe(wordsShift2.message));
       });
 
       describe('with a complex message', () => {
         beforeEach(() => {
-          result = decrypt(encrypt(complex.message, 2), 2);
+          result = decrypt(encrypt(complexShift2.message, 2), 2);
         });
 
-        it('restores the message', () => expect(result).toBe(complex.message));
+        it('restores the message', () => expect(result).toBe(complexShift2.message));
       });
     });
   });

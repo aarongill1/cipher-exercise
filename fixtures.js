@@ -1,17 +1,17 @@
 module.exports = {
-  simple: {
+  simpleShift2: {
     message: 'abc',
     shifted: 'cde'
   },
-  tricky: {
+  trickyShift2: {
     message: 'xyz',
     shifted: 'zab'
   },
-  words: {
+  wordsShift2: {
     message: 'abc abc',
     shifted: 'cde cde'
   },
-  complex: {
+  complexShift2: {
     message: 'my very secret message',
     shifted: 'oa xgta ugetgv oguucig'
   }
